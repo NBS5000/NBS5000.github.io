@@ -103,6 +103,7 @@
             font-size: 30pt;
             line-height: 85px;
             transition: all 0.1s ease-in;
+            overflow: hidden;
         }
         .sticky {
             position: fixed;
@@ -146,12 +147,16 @@
             min-width: 340px;
         }
         .name{
+            z-index: 4;
+            position: relative;
         }
         .stephen{
             font-weight: bold;
+            z-index: 4;
         }
         .barry{
             color:lightgray;
+            z-index: 4;
         }
         h2{
             color: rgb(0, 176, 240);
@@ -169,13 +174,6 @@
             transition: all linear 0.5s;
         }
 
-/*
-        .contact:hover, .tskills:hover, .pskills:hover, .ach:hover{
-            border: 0.5px solid rgba(50,50,50,0.5);
-            border-radius: 10px;
-            box-shadow: 5px 5px 10px rgba(50,50,50,0.5);
-            transition: all linear 0.5s;
-        }*/
         .ach{
             padding-right: 10px;
         }
@@ -321,10 +319,43 @@
             padding:0;
             margin:0;
         }
+        
+                /**slider**/
+
+        .slide{
+            height: 125px;
+            width: 15px;
+            position:relative;
+            background-color: rgb(97, 97, 97);
+            float: left;
+            z-index: 0;
+            -webkit-transition: all 600ms cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            transition:         all 600ms cubic-bezier(0.6, 0.04, 0.98, 0.335); 
+            margin-left: -600px;
+            -webkit-animation: slider 6s;
+            animation: slider 6s ;
+            border-image-source: linear-gradient(to left,rgba(107, 107, 107,0.8), rgb(97, 97, 97));
+            border-image-slice: 10 fill;
+            padding: 0 30px;
+        }
+
+        .stickySlide{
+            height: 60px;
+        }
+        @-webkit-keyframes slider {
+            from {left: 0px;}
+            to {left: 3000px;}
+        }
+        @keyframes slider {
+            from {left: 0px;}
+            to {left: 3000px;}
+        }
+        /***********/
     </style>
 </head>
 <body>
     <header id="myHeader">
+        <div class="slide"></div>
         <div class="name">
             <span class="stephen">Stephen</span><span class="barry">Barry</span>
         </div>
@@ -590,9 +621,11 @@
     
     function myFunction() {
         if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
+            header.classList.add("sticky");
+            slide.classList.add("stickySlide");
         } else {
-        header.classList.remove("sticky");
+            header.classList.remove("sticky");
+            slide.classList.remove("stickySlide");
         }
     }
 </script>
