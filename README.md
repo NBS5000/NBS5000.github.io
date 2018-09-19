@@ -1,5 +1,3 @@
 # NBS5000.github.io
 
-My CV.
-
-Testing github
+Thanks for looking, however I'm no longer looking.
